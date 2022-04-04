@@ -9,7 +9,7 @@ Usage:
 > Repeat!
 ## Screenshot
 ![f](https://i.ibb.co/3RGhpMg/captura.png)
-## Descarga
+## Download
 Windows 7, 10 y 11: https://github.com/nicoagr/Target/releases/download/v1.0/Target.zip
 ### Legal
-*Este proyecto NO tiene una licencia "de código abierto". Para obtener más información sobre licencias de código abierto, haz click [aquí](https://opensource.org/faq). Si quieres saber qué significa que este proyecto no tenga una licencia "de código abierto", haz click [aquí](https://choosealicense.com/no-permission/)*
+*This proyect DOES have an "open-source license". If you want to know more about open-source licenses, click [here](https://opensource.org/faq). If you want to know more about the "open-source" GNU GPLv3  license, click [here](https://choosealicense.com/licenses/gpl-3.0/).*

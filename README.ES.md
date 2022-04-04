@@ -11,4 +11,4 @@ Ennegrecedor de pantalla para emergencias
 ## Descarga
 Windows 7, 10 y 11: https://github.com/nicoagr/Target/releases/download/v1.0/Target.zip
 ### Legal
-*Este proyecto NO tiene una licencia "de código abierto". Para obtener más información sobre licencias de código abierto, haz click [aquí](https://opensource.org/faq). Si quieres saber qué significa que este proyecto no tenga una licencia "de código abierto", haz click [aquí](https://choosealicense.com/no-permission/)*
+*Este proyecto SI tiene una licencia "de código abierto". Para obtener más información sobre licencias de código abierto, haz click [aquí](https://opensource.org/faq). Si quieres saber qué significa que este proyecto tenga la licencia "de código abierto" GNU GPLv3, haz click [aquí](https://choosealicense.com/licenses/gpl-3.0/)*

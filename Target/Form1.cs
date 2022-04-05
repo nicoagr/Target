@@ -60,6 +60,12 @@ namespace Target
             base.WndProc(ref m);
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Disable Alt F4 to close the form
+            e.Cancel = (e.CloseReason == CloseReason.UserClosing);
+        }
+
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -69,5 +75,6 @@ namespace Target
         {
             this.Visible = false;
         }
+
     }
 }

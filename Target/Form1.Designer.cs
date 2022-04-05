@@ -34,8 +34,9 @@ namespace Target
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.targetV10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eNDKEYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,16 +54,10 @@ namespace Target
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.targetV10ToolStripMenuItem,
+            this.eNDKEYToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 52);
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 76);
             // 
             // targetV10ToolStripMenuItem
             // 
@@ -70,6 +65,20 @@ namespace Target
             this.targetV10ToolStripMenuItem.Name = "targetV10ToolStripMenuItem";
             this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
             this.targetV10ToolStripMenuItem.Text = "Target - v1.0";
+            // 
+            // eNDKEYToolStripMenuItem
+            // 
+            this.eNDKEYToolStripMenuItem.Enabled = false;
+            this.eNDKEYToolStripMenuItem.Name = "eNDKEYToolStripMenuItem";
+            this.eNDKEYToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.eNDKEYToolStripMenuItem.Text = "Key :: END";
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.salirToolStripMenuItem.Text = "Exit";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -83,6 +92,7 @@ namespace Target
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Target";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -95,5 +105,6 @@ namespace Target
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem salirToolStripMenuItem;
         private ToolStripMenuItem targetV10ToolStripMenuItem;
+        private ToolStripMenuItem eNDKEYToolStripMenuItem;
     }
 }

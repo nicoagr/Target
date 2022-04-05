@@ -1,9 +1,9 @@
 # Target
 Ennegrecedor de pantalla para emergencias
 ## Cómo usar el programa:
-> Pulsar la tecla 'END' para apagar la pantalla al instante
+> Pulsar la tecla 'END' para apagar la pantalla al instante. También se silenciará el sonido.
 
-> Pulsar la tecla 'END' para volver al estado normal del ordenador
+> Pulsar la tecla 'END' para volver al estado normal del ordenador: pantalla y sonido.
  
 > Repetir!
 ## Captura de pantalla

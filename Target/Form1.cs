@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using AudioSwitcher.AudioApi.CoreAudio;
 
 namespace Target
 {
@@ -16,12 +17,15 @@ namespace Target
         public static extern bool UnregisterHotKey(IntPtr hwnd, int id);
 
         private Point cursorPoint;
+        private double volume;
+        private CoreAudioDevice defaultPlaybackDevice;
 
         public Form1()
         {
             InitializeComponent();
             // Action key :: Keys.End
             RegisterHotKey(this.Handle, mActionHotKeyID, 0, (int)Keys.End);
+            defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
         }
 
         protected override void WndProc(ref Message m)
@@ -39,11 +43,17 @@ namespace Target
                     this.Cursor = new Cursor(Cursor.Current.Handle);
                     Cursor.Position = cursorPoint;
 
+                    // Restore volume
+                    defaultPlaybackDevice.Volume = volume;
+
                 }
                 else
                 {
                     // Save cursor position
                     GetCursorPos(out cursorPoint);
+                    // Save volume
+                    volume = defaultPlaybackDevice.Volume;
+                    defaultPlaybackDevice.Volume = 0;
 
                     // Fullscreen
                     this.Visible = true;

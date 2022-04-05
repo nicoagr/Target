@@ -48,12 +48,7 @@ namespace Target
 
                 }
                 else
-                {
-                    // Save cursor position
-                    GetCursorPos(out cursorPoint);
-                    // Save volume
-                    volume = defaultPlaybackDevice.Volume;
-                    defaultPlaybackDevice.Volume = 0;
+                {   
 
                     // Fullscreen
                     this.Visible = true;
@@ -61,9 +56,16 @@ namespace Target
                     this.FormBorderStyle = FormBorderStyle.None;
                     this.WindowState = FormWindowState.Maximized;
 
+                    // Save cursor position
+                    GetCursorPos(out cursorPoint);
                     // Cursor Hide
                     this.Cursor = new Cursor(Cursor.Current.Handle);
                     Cursor.Position = new Point(10000, 10000);
+
+                    // Save volume
+                    volume = defaultPlaybackDevice.Volume;
+                    // Mute volume
+                    defaultPlaybackDevice.Volume = 0;
 
                 }
             }

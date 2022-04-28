@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using AudioSwitcher.AudioApi.CoreAudio;
 
@@ -19,6 +20,8 @@ namespace Target
         private Point cursorPoint;
         private double volume;
         private CoreAudioDevice defaultPlaybackDevice;
+        private bool hora = true;
+        private Timer clock = new Timer();
 
         public Form1()
         {
@@ -32,12 +35,16 @@ namespace Target
         {
             if (m.Msg == 0x0312 && m.WParam.ToInt32() == mActionHotKeyID)
             {
+
                 if (WindowState == FormWindowState.Maximized)
                 {
                     // Hide window
                     this.TopMost = false;
                     this.WindowState = FormWindowState.Normal;
                     this.Visible = false;
+
+                    // hide clock
+                    horatxt.Visible = false;
 
                     //Restore cursor position
                     this.Cursor = new Cursor(Cursor.Current.Handle);
@@ -56,6 +63,21 @@ namespace Target
                     this.FormBorderStyle = FormBorderStyle.None;
                     this.WindowState = FormWindowState.Maximized;
 
+                    // show clock
+                    if (hora)
+                    {
+                        horatxt.Text = DateTime.Now.ToString("HH:mm:ss");
+                        int y = (this.Height / 2) - (horatxt.Height / 2);
+                        int x = (this.Width / 2) - (horatxt.Width / 2);
+                        horatxt.Location = new Point(x, y);
+
+                        clock.Tick += new EventHandler(clock_Tick);
+                        clock.Interval = 1000; // in miliseconds
+                        clock.Start();
+
+                        horatxt.Visible = true;
+                    }
+               
                     // Save cursor position
                     GetCursorPos(out cursorPoint);
                     // Cursor Hide
@@ -70,6 +92,11 @@ namespace Target
                 }
             }
             base.WndProc(ref m);
+        }
+
+        private void clock_Tick(object sender, EventArgs e)
+        {
+                horatxt.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -88,5 +115,10 @@ namespace Target
             this.Visible = false;
         }
 
+        private void backgoundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (backgoundToolStripMenuItem.Checked) hora = true;
+            else hora = false;
+        }
     }
 }

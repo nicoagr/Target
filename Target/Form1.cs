@@ -45,6 +45,8 @@ namespace Target
 
                     // hide clock
                     horatxt.Visible = false;
+                    clock.Stop();
+                    clock.Dispose();
 
                     //Restore cursor position
                     this.Cursor = new Cursor(Cursor.Current.Handle);

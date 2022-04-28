@@ -10,6 +10,6 @@ Usage:
 ## Screenshot
 ![f](https://i.ibb.co/3RGhpMg/captura.png)
 ## Download
-Windows 7, 10 and 11: https://github.com/nicoagr/Target/releases/download/v2.0/Target_v2.zip
+Windows 7, 10 and 11: https://github.com/nicoagr/Target/releases/download/v3.0/Target_v3.zip
 ### Legal
 *This proyect DOES have an "open-source license". If you want to know more about open-source licenses, click [here](https://opensource.org/faq). If you want to know more about the "open-source" GNU GPLv3  license, click [here](https://choosealicense.com/licenses/gpl-3.0/).*

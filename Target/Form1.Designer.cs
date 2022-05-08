@@ -39,6 +39,7 @@ namespace Target
             this.backgoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horatxt = new System.Windows.Forms.Label();
+            this.muteAudioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,23 +58,24 @@ namespace Target
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.targetV10ToolStripMenuItem,
             this.eNDKEYToolStripMenuItem,
+            this.muteAudioToolStripMenuItem,
             this.backgoundToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 108);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 162);
             // 
             // targetV10ToolStripMenuItem
             // 
             this.targetV10ToolStripMenuItem.Enabled = false;
             this.targetV10ToolStripMenuItem.Name = "targetV10ToolStripMenuItem";
-            this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.targetV10ToolStripMenuItem.Text = "Target - v1.0";
             // 
             // eNDKEYToolStripMenuItem
             // 
             this.eNDKEYToolStripMenuItem.Enabled = false;
             this.eNDKEYToolStripMenuItem.Name = "eNDKEYToolStripMenuItem";
-            this.eNDKEYToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.eNDKEYToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.eNDKEYToolStripMenuItem.Text = "Key :: END";
             // 
             // backgoundToolStripMenuItem
@@ -82,14 +84,14 @@ namespace Target
             this.backgoundToolStripMenuItem.CheckOnClick = true;
             this.backgoundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.backgoundToolStripMenuItem.Name = "backgoundToolStripMenuItem";
-            this.backgoundToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.backgoundToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.backgoundToolStripMenuItem.Text = "Clock";
             this.backgoundToolStripMenuItem.Click += new System.EventHandler(this.backgoundToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.salirToolStripMenuItem.Text = "Exit";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -104,6 +106,16 @@ namespace Target
             this.horatxt.TabIndex = 1;
             this.horatxt.Text = "h:mm:ss tt";
             this.horatxt.Visible = false;
+            // 
+            // muteAudioToolStripMenuItem
+            // 
+            this.muteAudioToolStripMenuItem.Checked = true;
+            this.muteAudioToolStripMenuItem.CheckOnClick = true;
+            this.muteAudioToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.muteAudioToolStripMenuItem.Name = "muteAudioToolStripMenuItem";
+            this.muteAudioToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.muteAudioToolStripMenuItem.Text = "Mute Audio";
+            this.muteAudioToolStripMenuItem.Click += new System.EventHandler(this.muteAudioToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -139,5 +151,6 @@ namespace Target
         private ToolStripMenuItem eNDKEYToolStripMenuItem;
         private ToolStripMenuItem backgoundToolStripMenuItem;
         private Label horatxt;
+        private ToolStripMenuItem muteAudioToolStripMenuItem;
     }
 }

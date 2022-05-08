@@ -18,6 +18,7 @@ namespace Target
         public static extern bool UnregisterHotKey(IntPtr hwnd, int id);
 
         private Point cursorPoint;
+        private bool mute = true;
         private double volume;
         private CoreAudioDevice defaultPlaybackDevice;
         private bool hora = true;
@@ -86,11 +87,13 @@ namespace Target
                     this.Cursor = new Cursor(Cursor.Current.Handle);
                     Cursor.Position = new Point(10000, 10000);
 
-                    // Save volume
-                    volume = defaultPlaybackDevice.Volume;
-                    // Mute volume
-                    defaultPlaybackDevice.Volume = 0;
-
+                    if (mute)
+                    {
+                        // Save volume
+                        volume = defaultPlaybackDevice.Volume;
+                        // Mute volume
+                        defaultPlaybackDevice.Volume = 0;
+                    }
                 }
             }
             base.WndProc(ref m);
@@ -121,6 +124,12 @@ namespace Target
         {
             if (backgoundToolStripMenuItem.Checked) hora = true;
             else hora = false;
+        }
+
+        private void muteAudioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (muteAudioToolStripMenuItem.Checked) mute = true;
+            else mute = false;
         }
     }
 }

@@ -53,9 +53,11 @@ namespace Target
                     this.Cursor = new Cursor(Cursor.Current.Handle);
                     Cursor.Position = cursorPoint;
 
-                    // Restore volume
-                    defaultPlaybackDevice.Volume = volume;
-
+                    if (mute)
+                    {
+                        // Restore volume
+                        defaultPlaybackDevice.Volume = volume;
+                    }                
                 }
                 else
                 {   

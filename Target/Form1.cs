@@ -57,7 +57,10 @@ namespace Target
                     {
                         // Restore volume
                         defaultPlaybackDevice.Volume = volume;
-                    }                
+
+                        // update default playback device
+                        defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
+                    }     
                 }
                 else
                 {   
@@ -97,6 +100,9 @@ namespace Target
                         defaultPlaybackDevice.Volume = 0;
                     }
                 }
+                // memory optimization
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
             base.WndProc(ref m);
         }

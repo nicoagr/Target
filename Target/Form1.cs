@@ -68,6 +68,8 @@ namespace Target
                     // Fullscreen
                     this.Visible = true;
                     this.TopMost = true;
+                    this.BringToFront();
+                    this.Dock = DockStyle.Fill;
                     this.FormBorderStyle = FormBorderStyle.None;
                     this.WindowState = FormWindowState.Maximized;
 

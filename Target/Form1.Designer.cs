@@ -62,20 +62,20 @@ namespace Target
             this.backgoundToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 134);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 162);
             // 
             // targetV10ToolStripMenuItem
             // 
             this.targetV10ToolStripMenuItem.Enabled = false;
             this.targetV10ToolStripMenuItem.Name = "targetV10ToolStripMenuItem";
-            this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
-            this.targetV10ToolStripMenuItem.Text = "Target - v4.1";
+            this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.targetV10ToolStripMenuItem.Text = "Target - v5";
             // 
             // eNDKEYToolStripMenuItem
             // 
             this.eNDKEYToolStripMenuItem.Enabled = false;
             this.eNDKEYToolStripMenuItem.Name = "eNDKEYToolStripMenuItem";
-            this.eNDKEYToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.eNDKEYToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.eNDKEYToolStripMenuItem.Text = "Key :: END";
             // 
             // muteAudioToolStripMenuItem
@@ -84,7 +84,7 @@ namespace Target
             this.muteAudioToolStripMenuItem.CheckOnClick = true;
             this.muteAudioToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.muteAudioToolStripMenuItem.Name = "muteAudioToolStripMenuItem";
-            this.muteAudioToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.muteAudioToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.muteAudioToolStripMenuItem.Text = "Mute Audio";
             this.muteAudioToolStripMenuItem.Click += new System.EventHandler(this.muteAudioToolStripMenuItem_Click);
             // 
@@ -94,14 +94,14 @@ namespace Target
             this.backgoundToolStripMenuItem.CheckOnClick = true;
             this.backgoundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.backgoundToolStripMenuItem.Name = "backgoundToolStripMenuItem";
-            this.backgoundToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.backgoundToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.backgoundToolStripMenuItem.Text = "Clock";
             this.backgoundToolStripMenuItem.Click += new System.EventHandler(this.backgoundToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
             this.salirToolStripMenuItem.Text = "Exit";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 

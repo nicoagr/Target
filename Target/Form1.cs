@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AudioSwitcher.AudioApi.CoreAudio;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Target
 {
@@ -31,6 +32,11 @@ namespace Target
             // Action key :: Keys.End
             RegisterHotKey(this.Handle, mActionHotKeyID, 0, (int)Keys.End);
             defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
+            // Send notification
+            this.notifyIcon1.BalloonTipText = "Protector de Pantallas Activado";
+            this.notifyIcon1.BalloonTipTitle = "[Target v5.0]";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.ShowBalloonTip(0);
         }
 
         protected override void WndProc(ref Message m)

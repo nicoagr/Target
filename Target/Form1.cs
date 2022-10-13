@@ -36,7 +36,7 @@ namespace Target
             this.notifyIcon1.BalloonTipText = "Screen Protector Operative";
             this.notifyIcon1.BalloonTipTitle = "[Target v5.0]";
             this.notifyIcon1.Visible = true;
-            this.notifyIcon1.ShowBalloonTip(0);
+            this.notifyIcon1.ShowBalloonTip(2);
         }
 
         protected override void WndProc(ref Message m)

@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AudioSwitcher.AudioApi.CoreAudio;
@@ -122,6 +123,7 @@ namespace Target
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Program.mutex.ReleaseMutex();
             Application.Exit();
         }
 

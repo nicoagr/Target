@@ -8,7 +8,7 @@ namespace Target
     internal static class Program
     {
 
-        static Mutex mutex = new Mutex(true, name: "{37B1A52D-FA21-476C-9E6A-0FE832F112F2}");
+        internal static Mutex mutex = new Mutex(true, name: "{37B1A52D-FA21-476C-9E6A-0FE832F112F2}");
 
         [STAThread]
         static void Main()

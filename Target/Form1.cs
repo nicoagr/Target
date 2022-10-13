@@ -33,7 +33,7 @@ namespace Target
             RegisterHotKey(this.Handle, mActionHotKeyID, 0, (int)Keys.End);
             defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
             // Send notification
-            this.notifyIcon1.BalloonTipText = "Protector de Pantallas Activado";
+            this.notifyIcon1.BalloonTipText = "Screen Protector Operative";
             this.notifyIcon1.BalloonTipTitle = "[Target v5.0]";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.ShowBalloonTip(0);

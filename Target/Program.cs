@@ -28,7 +28,7 @@ namespace Target
             }
             else
             {
-                MessageBox.Show("El programa ya se está ejecutando!!", "Target - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("El programa ya se está ejecutando!!" + Environment.NewLine + "This program is already executing!!", "Target - Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
     }

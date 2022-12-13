@@ -12,6 +12,7 @@ namespace Target
     public partial class Form1 : Form
     {
         const int mActionHotKeyID = 1;
+        const int mPrintHotKeyID = 2;
         [DllImport("user32.dll")]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int key);
         [DllImport("user32.dll")]
@@ -19,12 +20,26 @@ namespace Target
         [DllImport("user32.dll")]
         public static extern bool UnregisterHotKey(IntPtr hwnd, int id);
 
+        [DllImport("user32.dll")]
+        private static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+
+        private const int KEYEVENTF_EXTENDEDKEY = 1;
+        private const int KEYEVENTF_KEYUP = 2;
+        internal static void KeyDown(Keys vKey)
+        {
+            keybd_event((byte)vKey, 0, KEYEVENTF_EXTENDEDKEY, 0);
+        }
+        internal static void KeyUp(Keys vKey)
+        {
+            keybd_event((byte)vKey, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
+        }
         private Point cursorPoint;
         private bool mute = true;
         private double volume;
         private CoreAudioDevice defaultPlaybackDevice;
         private bool hora = true;
         private Timer clock = new Timer();
+        private bool prntshortcut = true;
 
         public Form1()
         {
@@ -32,9 +47,11 @@ namespace Target
             // Action key :: Keys.End
             RegisterHotKey(this.Handle, mActionHotKeyID, 0, (int)Keys.End);
             defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
+            // Action key :: Keys.Imppnt
+            RegisterHotKey(this.Handle, mPrintHotKeyID, 0, (int)Keys.PrintScreen);
             // Send notification
-            this.notifyIcon1.BalloonTipText = "Screen Protector Operative";
-            this.notifyIcon1.BalloonTipTitle = "[Target v5.0]";
+            this.notifyIcon1.BalloonTipText = "Background Tool Operative";
+            this.notifyIcon1.BalloonTipTitle = "[Target v6.0]";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.ShowBalloonTip(2);
         }
@@ -113,6 +130,19 @@ namespace Target
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
+            else if (m.Msg == 0x0312 && m.WParam.ToInt32() == mPrintHotKeyID)
+            {
+                if (prntshortcut)
+                {
+                    // Send screenshot command
+                    KeyDown(Keys.LShiftKey);
+                    KeyDown(Keys.LWin);
+                    KeyDown(Keys.S);
+                    KeyUp(Keys.S);
+                    KeyUp(Keys.LWin);
+                    KeyUp(Keys.LShiftKey);
+                }
+            }
             base.WndProc(ref m);
         }
 
@@ -148,6 +178,12 @@ namespace Target
         {
             if (muteAudioToolStripMenuItem.Checked) mute = true;
             else mute = false;
+        }
+
+        private void shortcutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (shortcutToolStripMenuItem.Checked) prntshortcut = true;
+            else prntshortcut = false;
         }
     }
 }

@@ -1,13 +1,15 @@
 # Target
-Ennegrecedor de pantalla para emergencias
+Utilidad en segundo plano
 ## Cómo usar el programa:
 > Pulsar la tecla 'END' para apagar la pantalla al instante. También se silenciará el sonido.
 
 > Pulsar la tecla 'END' para volver al estado normal del ordenador: pantalla y sonido.
  
+> Pulsar la tecla 'PRT SCR' para sacar un pantallazo (Sólo Windows 10-11) (abreviación de WIN+SHIFT+S)
+ 
 > Repetir!
 ## Captura de pantalla
-![f](https://i.ibb.co/3RGhpMg/captura.png)
+![f](https://i.imgur.com/g9rTPlH.png)
 ## Descarga
 Windows 7, 10 y 11: [https://github.com/nicoagr/Target/releases/latest/download/Target.zip](https://github.com/nicoagr/Target/releases/latest/download/Target.zip)
 ### Legal

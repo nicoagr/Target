@@ -40,6 +40,8 @@ namespace Target
             this.backgoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horatxt = new System.Windows.Forms.Label();
+            this.keyIMPPNTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shortcutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,16 +62,18 @@ namespace Target
             this.eNDKEYToolStripMenuItem,
             this.muteAudioToolStripMenuItem,
             this.backgoundToolStripMenuItem,
+            this.keyIMPPNTToolStripMenuItem,
+            this.shortcutToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 162);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 214);
             // 
             // targetV10ToolStripMenuItem
             // 
             this.targetV10ToolStripMenuItem.Enabled = false;
             this.targetV10ToolStripMenuItem.Name = "targetV10ToolStripMenuItem";
             this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
-            this.targetV10ToolStripMenuItem.Text = "Target - v5";
+            this.targetV10ToolStripMenuItem.Text = "Target - v6.0";
             // 
             // eNDKEYToolStripMenuItem
             // 
@@ -117,6 +121,23 @@ namespace Target
             this.horatxt.Text = "h:mm:ss tt";
             this.horatxt.Visible = false;
             // 
+            // keyIMPPNTToolStripMenuItem
+            // 
+            this.keyIMPPNTToolStripMenuItem.Enabled = false;
+            this.keyIMPPNTToolStripMenuItem.Name = "keyIMPPNTToolStripMenuItem";
+            this.keyIMPPNTToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.keyIMPPNTToolStripMenuItem.Text = "Key :: PrtScr";
+            // 
+            // shortcutToolStripMenuItem
+            // 
+            this.shortcutToolStripMenuItem.Checked = true;
+            this.shortcutToolStripMenuItem.CheckOnClick = true;
+            this.shortcutToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.shortcutToolStripMenuItem.Name = "shortcutToolStripMenuItem";
+            this.shortcutToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.shortcutToolStripMenuItem.Text = "Shortcut";
+            this.shortcutToolStripMenuItem.Click += new System.EventHandler(this.shortcutToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -152,5 +173,7 @@ namespace Target
         private ToolStripMenuItem backgoundToolStripMenuItem;
         private Label horatxt;
         private ToolStripMenuItem muteAudioToolStripMenuItem;
+        private ToolStripMenuItem keyIMPPNTToolStripMenuItem;
+        private ToolStripMenuItem shortcutToolStripMenuItem;
     }
 }

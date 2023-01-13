@@ -38,8 +38,10 @@ namespace Target
         private double volume;
         private CoreAudioDevice defaultPlaybackDevice;
         private bool hora = true;
-        private Timer clock = new Timer();
+        private Timer clock;
         private bool prntshortcut = true;
+        private Point faraway;
+        private Point horalocation;
 
         public Form1()
         {
@@ -54,6 +56,9 @@ namespace Target
             this.notifyIcon1.BalloonTipTitle = "[Target v6.0]";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.ShowBalloonTip(2);
+            clock = new Timer();
+            faraway = new Point(10000, 10000);
+            horalocation = new Point(0, 0);
         }
 
         protected override void WndProc(ref Message m)
@@ -71,10 +76,9 @@ namespace Target
                     // hide clock
                     horatxt.Visible = false;
                     clock.Stop();
-                    clock.Dispose();
+
 
                     //Restore cursor position
-                    this.Cursor = new Cursor(Cursor.Current.Handle);
                     Cursor.Position = cursorPoint;
 
                     if (mute)
@@ -83,8 +87,10 @@ namespace Target
                         defaultPlaybackDevice.Volume = volume;
 
                         // update default playback device
+                        defaultPlaybackDevice = null;
                         defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
-                    }     
+                    }
+                    GC.Collect();
                 }
                 else
                 {   
@@ -103,7 +109,9 @@ namespace Target
                         horatxt.Text = DateTime.Now.ToString("HH:mm:ss");
                         int y = (this.Height / 2) - (horatxt.Height / 2);
                         int x = (this.Width / 2) - (horatxt.Width / 2);
-                        horatxt.Location = new Point(x, y);
+                        horalocation.X = x;
+                        horalocation.Y = y;
+                        horatxt.Location = horalocation;
 
                         clock.Tick += new EventHandler(clock_Tick);
                         clock.Interval = 1000; // in miliseconds
@@ -111,12 +119,11 @@ namespace Target
 
                         horatxt.Visible = true;
                     }
-               
+
                     // Save cursor position
                     GetCursorPos(out cursorPoint);
                     // Cursor Hide
-                    this.Cursor = new Cursor(Cursor.Current.Handle);
-                    Cursor.Position = new Point(10000, 10000);
+                    Cursor.Position = faraway;
 
                     if (mute)
                     {
@@ -128,7 +135,6 @@ namespace Target
                 }
                 // memory optimization
                 GC.Collect();
-                GC.WaitForPendingFinalizers();
             }
             else if (m.Msg == 0x0312 && m.WParam.ToInt32() == mPrintHotKeyID)
             {
@@ -159,6 +165,8 @@ namespace Target
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            UnregisterHotKey(this.Handle, mActionHotKeyID);
+            UnregisterHotKey(this.Handle, mPrintHotKeyID);
             Program.mutex.ReleaseMutex();
             Application.Exit();
         }

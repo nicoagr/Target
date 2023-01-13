@@ -53,7 +53,7 @@ namespace Target
             RegisterHotKey(this.Handle, mPrintHotKeyID, 0, (int)Keys.PrintScreen);
             // Send notification
             this.notifyIcon1.BalloonTipText = "Background Tool Operative";
-            this.notifyIcon1.BalloonTipTitle = "[Target v6.0]";
+            this.notifyIcon1.BalloonTipTitle = "[Target v6.1]";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.ShowBalloonTip(2);
             clock = new Timer();

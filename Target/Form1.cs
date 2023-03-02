@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AudioSwitcher.AudioApi.CoreAudio;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Target
@@ -19,9 +18,11 @@ namespace Target
         public static extern bool GetCursorPos(out Point lpPoint);
         [DllImport("user32.dll")]
         public static extern bool UnregisterHotKey(IntPtr hwnd, int id);
-
         [DllImport("user32.dll")]
         private static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
+        private const int HWND_TOPMOST = -1;
 
         private const int KEYEVENTF_EXTENDEDKEY = 1;
         private const int KEYEVENTF_KEYUP = 2;
@@ -33,10 +34,14 @@ namespace Target
         {
             keybd_event((byte)vKey, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
         }
+        private const int APPCOMMAND_VOLUME_MUTE = 0x80000;
+        private const int WM_APPCOMMAND = 0x319;
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
+
         private Point cursorPoint;
         private bool mute = true;
-        private double volume;
-        private CoreAudioDevice defaultPlaybackDevice;
         private bool hora = true;
         private Timer clock;
         private bool prntshortcut = true;
@@ -48,7 +53,6 @@ namespace Target
             InitializeComponent();
             // Action key :: Keys.End
             RegisterHotKey(this.Handle, mActionHotKeyID, 0, (int)Keys.End);
-            defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
             // Action key :: Keys.Imppnt
             RegisterHotKey(this.Handle, mPrintHotKeyID, 0, (int)Keys.PrintScreen);
             // Send notification
@@ -56,7 +60,9 @@ namespace Target
             this.notifyIcon1.BalloonTipTitle = "[Target v6.1]";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.ShowBalloonTip(2);
+            // clock
             clock = new Timer();
+            clock.Tick += new EventHandler(clock_Tick);
             faraway = new Point(10000, 10000);
             horalocation = new Point(0, 0);
         }
@@ -84,13 +90,8 @@ namespace Target
                     if (mute)
                     {
                         // Restore volume
-                        defaultPlaybackDevice.Volume = volume;
-
-                        // update default playback device
-                        defaultPlaybackDevice = null;
-                        defaultPlaybackDevice = new CoreAudioController().DefaultPlaybackDevice;
+                        SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle, (IntPtr)APPCOMMAND_VOLUME_MUTE);
                     }
-                    GC.Collect();
                 }
                 else
                 {   
@@ -113,7 +114,6 @@ namespace Target
                         horalocation.Y = y;
                         horatxt.Location = horalocation;
 
-                        clock.Tick += new EventHandler(clock_Tick);
                         clock.Interval = 1000; // in miliseconds
                         clock.Start();
 
@@ -127,14 +127,10 @@ namespace Target
 
                     if (mute)
                     {
-                        // Save volume
-                        volume = defaultPlaybackDevice.Volume;
                         // Mute volume
-                        defaultPlaybackDevice.Volume = 0;
+                        SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle, (IntPtr)APPCOMMAND_VOLUME_MUTE);
                     }
                 }
-                // memory optimization
-                GC.Collect();
             }
             else if (m.Msg == 0x0312 && m.WParam.ToInt32() == mPrintHotKeyID)
             {

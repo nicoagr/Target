@@ -33,6 +33,7 @@ namespace Target
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.Text = "Target Main Window";
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.targetV10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eNDKEYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,7 +74,7 @@ namespace Target
             this.targetV10ToolStripMenuItem.Enabled = false;
             this.targetV10ToolStripMenuItem.Name = "targetV10ToolStripMenuItem";
             this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
-            this.targetV10ToolStripMenuItem.Text = "Target - v6.1";
+            this.targetV10ToolStripMenuItem.Text = "Target - v7.0";
             // 
             // eNDKEYToolStripMenuItem
             // 

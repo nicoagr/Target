@@ -1,8 +1,7 @@
 using System;
+using System.Collections;
 using System.Drawing;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 
@@ -48,6 +47,8 @@ namespace Target
         private Point faraway;
         private Point horalocation;
 
+        private Form[] toDelete;
+
         public Form1()
         {
             InitializeComponent();
@@ -57,7 +58,7 @@ namespace Target
             RegisterHotKey(this.Handle, mPrintHotKeyID, 0, (int)Keys.PrintScreen);
             // Send notification
             this.notifyIcon1.BalloonTipText = "Background Tool Operative";
-            this.notifyIcon1.BalloonTipTitle = "[Target v6.1]";
+            this.notifyIcon1.BalloonTipTitle = "[Target v7.0]";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.ShowBalloonTip(2);
             // clock
@@ -74,7 +75,18 @@ namespace Target
 
                 if (WindowState == FormWindowState.Maximized)
                 {
-                    // Hide window
+
+                    // Hide black forms in all other monitors
+                    ArrayList toDelete = new ArrayList();
+                    foreach (Form form in Application.OpenForms) {
+                        if (form.Text.Equals("Target Secondary Window")) {
+                            form.TopMost = false;
+                            form.WindowState = FormWindowState.Normal;
+                            form.Visible = false;
+                            toDelete.Add(form);
+                        }
+                    }
+                    // Hide MAIN window
                     this.TopMost = false;
                     this.WindowState = FormWindowState.Normal;
                     this.Visible = false;
@@ -92,6 +104,12 @@ namespace Target
                         // Restore volume
                         SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle, (IntPtr)APPCOMMAND_VOLUME_MUTE);
                     }
+                    
+                    // Free Memory
+                    foreach (Form f in toDelete) {
+                        f.Dispose();
+                    }
+                    toDelete.Clear();
                 }
                 else
                 {   
@@ -103,6 +121,24 @@ namespace Target
                     this.Dock = DockStyle.Fill;
                     this.FormBorderStyle = FormBorderStyle.None;
                     this.WindowState = FormWindowState.Maximized;
+                    // Create black fullscreen forms on other monitors
+                    Screen[] screens = Screen.AllScreens;
+                    for (int i = 0; i < screens.Length; i++)
+                    {
+                        if (!screens[i].Primary)
+                        {
+                            Form fullscreenForm = new Form();
+                            fullscreenForm.BackColor = Color.Black;
+                            fullscreenForm.Text = "Target Secondary Window";
+                            fullscreenForm.Dock = DockStyle.Fill;
+                            fullscreenForm.FormBorderStyle = FormBorderStyle.None;
+                            fullscreenForm.StartPosition = FormStartPosition.Manual;
+                            fullscreenForm.WindowState = FormWindowState.Maximized;
+                            fullscreenForm.FormClosing += Form1_FormClosing;
+                            fullscreenForm.Bounds = screens[i].Bounds;
+                            fullscreenForm.Show();
+                        }
+                    }
 
                     // show clock
                     if (hora)

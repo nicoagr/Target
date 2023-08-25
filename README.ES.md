@@ -12,5 +12,7 @@ Utilidad en segundo plano
 ![f](https://i.imgur.com/g9rTPlH.png)
 ## Descarga
 Windows 7, 10 y 11: [https://github.com/nicoagr/Target/releases/latest/download/Target.zip](https://github.com/nicoagr/Target/releases/latest/download/Target.zip)
+
+Este programa NO es compatible con otros sistemas operativos por su diseño intrínseco (usa llamadas al sistema).
 ### Legal
 *Este proyecto SI tiene una licencia "de código abierto". Para obtener más información sobre licencias de código abierto, haz click [aquí](https://opensource.org/faq). Si quieres saber qué significa que este proyecto tenga la licencia "de código abierto" GNU GPLv3, haz click [aquí](https://choosealicense.com/licenses/gpl-3.0/)*

@@ -33,7 +33,6 @@ namespace Target
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.Text = "Target Main Window";
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.targetV10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eNDKEYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,20 +66,20 @@ namespace Target
             this.shortcutToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 214);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 186);
             // 
             // targetV10ToolStripMenuItem
             // 
             this.targetV10ToolStripMenuItem.Enabled = false;
             this.targetV10ToolStripMenuItem.Name = "targetV10ToolStripMenuItem";
-            this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
-            this.targetV10ToolStripMenuItem.Text = "Target - v7.0";
+            this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.targetV10ToolStripMenuItem.Text = "Target - v7.1";
             // 
             // eNDKEYToolStripMenuItem
             // 
             this.eNDKEYToolStripMenuItem.Enabled = false;
             this.eNDKEYToolStripMenuItem.Name = "eNDKEYToolStripMenuItem";
-            this.eNDKEYToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.eNDKEYToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.eNDKEYToolStripMenuItem.Text = "Key :: END";
             // 
             // muteAudioToolStripMenuItem
@@ -89,7 +88,7 @@ namespace Target
             this.muteAudioToolStripMenuItem.CheckOnClick = true;
             this.muteAudioToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.muteAudioToolStripMenuItem.Name = "muteAudioToolStripMenuItem";
-            this.muteAudioToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.muteAudioToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.muteAudioToolStripMenuItem.Text = "Mute Audio";
             this.muteAudioToolStripMenuItem.Click += new System.EventHandler(this.muteAudioToolStripMenuItem_Click);
             // 
@@ -99,7 +98,7 @@ namespace Target
             this.backgoundToolStripMenuItem.CheckOnClick = true;
             this.backgoundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.backgoundToolStripMenuItem.Name = "backgoundToolStripMenuItem";
-            this.backgoundToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.backgoundToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.backgoundToolStripMenuItem.Text = "Clock";
             this.backgoundToolStripMenuItem.Click += new System.EventHandler(this.backgoundToolStripMenuItem_Click);
             // 
@@ -107,7 +106,7 @@ namespace Target
             // 
             this.keyIMPPNTToolStripMenuItem.Enabled = false;
             this.keyIMPPNTToolStripMenuItem.Name = "keyIMPPNTToolStripMenuItem";
-            this.keyIMPPNTToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.keyIMPPNTToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.keyIMPPNTToolStripMenuItem.Text = "Key :: PrtScr";
             // 
             // shortcutToolStripMenuItem
@@ -116,14 +115,14 @@ namespace Target
             this.shortcutToolStripMenuItem.CheckOnClick = true;
             this.shortcutToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.shortcutToolStripMenuItem.Name = "shortcutToolStripMenuItem";
-            this.shortcutToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.shortcutToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.shortcutToolStripMenuItem.Text = "Shortcut";
             this.shortcutToolStripMenuItem.Click += new System.EventHandler(this.shortcutToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.salirToolStripMenuItem.Text = "Exit";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 

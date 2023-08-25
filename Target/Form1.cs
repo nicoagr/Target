@@ -1,3 +1,4 @@
+using NAudio.CoreAudioApi;
 using System;
 using System.Collections;
 using System.Drawing;
@@ -19,25 +20,17 @@ namespace Target
         public static extern bool UnregisterHotKey(IntPtr hwnd, int id);
         [DllImport("user32.dll")]
         private static extern void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
-        [DllImport("user32.dll")]
-        public static extern IntPtr SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
-        private const int HWND_TOPMOST = -1;
-
+        
         private const int KEYEVENTF_EXTENDEDKEY = 1;
         private const int KEYEVENTF_KEYUP = 2;
-        internal static void KeyDown(Keys vKey)
+        internal static new void KeyDown(Keys vKey)
         {
             keybd_event((byte)vKey, 0, KEYEVENTF_EXTENDEDKEY, 0);
         }
-        internal static void KeyUp(Keys vKey)
+        internal static new void KeyUp(Keys vKey)
         {
             keybd_event((byte)vKey, 0, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
         }
-        private const int APPCOMMAND_VOLUME_MUTE = 0x80000;
-        private const int WM_APPCOMMAND = 0x319;
-
-        [DllImport("user32.dll")]
-        public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg, IntPtr wParam, IntPtr lParam);
 
         private Point cursorPoint;
         private bool mute = true;
@@ -47,8 +40,11 @@ namespace Target
         private Point faraway;
         private Point horalocation;
 
-        private Form[] toDelete;
+        ArrayList toDeleteList;
 
+        MMDevice audiodevice;
+        private MMDeviceEnumerator audioenumerator;
+        private float savedVolume;
         public Form1()
         {
             InitializeComponent();
@@ -58,7 +54,7 @@ namespace Target
             RegisterHotKey(this.Handle, mPrintHotKeyID, 0, (int)Keys.PrintScreen);
             // Send notification
             this.notifyIcon1.BalloonTipText = "Background Tool Operative";
-            this.notifyIcon1.BalloonTipTitle = "[Target v7.0]";
+            this.notifyIcon1.BalloonTipTitle = "[Target v7.1]";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.ShowBalloonTip(2);
             // clock
@@ -66,6 +62,10 @@ namespace Target
             clock.Tick += new EventHandler(clock_Tick);
             faraway = new Point(10000, 10000);
             horalocation = new Point(0, 0);
+            // get audio device abstractor
+            audioenumerator = new MMDeviceEnumerator();
+            // list of forms to delete
+            toDeleteList = new ArrayList();
         }
 
         protected override void WndProc(ref Message m)
@@ -77,13 +77,13 @@ namespace Target
                 {
 
                     // Hide black forms in all other monitors
-                    ArrayList toDelete = new ArrayList();
+                    toDeleteList.Clear();
                     foreach (Form form in Application.OpenForms) {
                         if (form.Text.Equals("Target Secondary Window")) {
                             form.TopMost = false;
                             form.WindowState = FormWindowState.Normal;
                             form.Visible = false;
-                            toDelete.Add(form);
+                            toDeleteList.Add(form);
                         }
                     }
                     // Hide MAIN window
@@ -102,14 +102,16 @@ namespace Target
                     if (mute)
                     {
                         // Restore volume
-                        SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle, (IntPtr)APPCOMMAND_VOLUME_MUTE);
+                        audiodevice = audioenumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                        audiodevice.AudioEndpointVolume.MasterVolumeLevelScalar = savedVolume;
+                        audiodevice.Dispose();
                     }
                     
                     // Free Memory
-                    foreach (Form f in toDelete) {
+                    foreach (Form f in toDeleteList) {
                         f.Dispose();
                     }
-                    toDelete.Clear();
+                    toDeleteList.Clear();
                 }
                 else
                 {   
@@ -164,7 +166,10 @@ namespace Target
                     if (mute)
                     {
                         // Mute volume
-                        SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle, (IntPtr)APPCOMMAND_VOLUME_MUTE);
+                        audiodevice = audioenumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                        savedVolume = audiodevice.AudioEndpointVolume.MasterVolumeLevelScalar;
+                        audiodevice.AudioEndpointVolume.MasterVolumeLevelScalar = 0.0f;
+                        audiodevice.Dispose();
                     }
                 }
             }

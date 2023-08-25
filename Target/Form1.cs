@@ -104,13 +104,15 @@ namespace Target
                         // Restore volume
                         audiodevice = audioenumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
                         audiodevice.AudioEndpointVolume.MasterVolumeLevelScalar = savedVolume;
-                        audiodevice.Dispose();
+                        GC.SuppressFinalize(audiodevice);
                     }
                     
                     // Free Memory
                     foreach (Form f in toDeleteList) {
                         f.Dispose();
+                        GC.SuppressFinalize(f);
                     }
+                    GC.Collect();
                     toDeleteList.Clear();
                 }
                 else
@@ -168,7 +170,7 @@ namespace Target
                         audiodevice = audioenumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
                         savedVolume = audiodevice.AudioEndpointVolume.MasterVolumeLevelScalar;
                         audiodevice.AudioEndpointVolume.MasterVolumeLevelScalar = 0.0f;
-                        audiodevice.Dispose();
+                        GC.SuppressFinalize(audiodevice);
                     }
                 }
             }

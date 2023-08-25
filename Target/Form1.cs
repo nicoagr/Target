@@ -118,16 +118,15 @@ namespace Target
 
                     // Fullscreen
                     this.Visible = true;
-                    this.TopMost = true;
                     this.BringToFront();
                     this.Dock = DockStyle.Fill;
                     this.FormBorderStyle = FormBorderStyle.None;
                     this.WindowState = FormWindowState.Maximized;
+                    this.TopMost = true;
                     // Create black fullscreen forms on other monitors
-                    Screen[] screens = Screen.AllScreens;
-                    for (int i = 0; i < screens.Length; i++)
+                    foreach (Screen s in Screen.AllScreens)
                     {
-                        if (!screens[i].Primary)
+                        if (!s.Primary)
                         {
                             Form fullscreenForm = new Form();
                             fullscreenForm.BackColor = Color.Black;
@@ -137,7 +136,7 @@ namespace Target
                             fullscreenForm.StartPosition = FormStartPosition.Manual;
                             fullscreenForm.WindowState = FormWindowState.Maximized;
                             fullscreenForm.FormClosing += Form1_FormClosing;
-                            fullscreenForm.Bounds = screens[i].Bounds;
+                            fullscreenForm.Bounds = s.Bounds;
                             fullscreenForm.Show();
                         }
                     }

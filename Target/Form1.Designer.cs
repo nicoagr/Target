@@ -66,20 +66,20 @@ namespace Target
             this.shortcutToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(160, 186);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 180);
             // 
             // targetV10ToolStripMenuItem
             // 
             this.targetV10ToolStripMenuItem.Enabled = false;
             this.targetV10ToolStripMenuItem.Name = "targetV10ToolStripMenuItem";
-            this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.targetV10ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.targetV10ToolStripMenuItem.Text = "Target - v7.1";
             // 
             // eNDKEYToolStripMenuItem
             // 
             this.eNDKEYToolStripMenuItem.Enabled = false;
             this.eNDKEYToolStripMenuItem.Name = "eNDKEYToolStripMenuItem";
-            this.eNDKEYToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.eNDKEYToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eNDKEYToolStripMenuItem.Text = "Key :: END";
             // 
             // muteAudioToolStripMenuItem
@@ -88,7 +88,7 @@ namespace Target
             this.muteAudioToolStripMenuItem.CheckOnClick = true;
             this.muteAudioToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.muteAudioToolStripMenuItem.Name = "muteAudioToolStripMenuItem";
-            this.muteAudioToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.muteAudioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.muteAudioToolStripMenuItem.Text = "Mute Audio";
             this.muteAudioToolStripMenuItem.Click += new System.EventHandler(this.muteAudioToolStripMenuItem_Click);
             // 
@@ -98,7 +98,7 @@ namespace Target
             this.backgoundToolStripMenuItem.CheckOnClick = true;
             this.backgoundToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.backgoundToolStripMenuItem.Name = "backgoundToolStripMenuItem";
-            this.backgoundToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.backgoundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.backgoundToolStripMenuItem.Text = "Clock";
             this.backgoundToolStripMenuItem.Click += new System.EventHandler(this.backgoundToolStripMenuItem_Click);
             // 
@@ -106,8 +106,8 @@ namespace Target
             // 
             this.keyIMPPNTToolStripMenuItem.Enabled = false;
             this.keyIMPPNTToolStripMenuItem.Name = "keyIMPPNTToolStripMenuItem";
-            this.keyIMPPNTToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
-            this.keyIMPPNTToolStripMenuItem.Text = "Key :: PrtScr";
+            this.keyIMPPNTToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.keyIMPPNTToolStripMenuItem.Text = "Key :: Insert";
             // 
             // shortcutToolStripMenuItem
             // 
@@ -115,14 +115,14 @@ namespace Target
             this.shortcutToolStripMenuItem.CheckOnClick = true;
             this.shortcutToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.shortcutToolStripMenuItem.Name = "shortcutToolStripMenuItem";
-            this.shortcutToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.shortcutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.shortcutToolStripMenuItem.Text = "Shortcut";
             this.shortcutToolStripMenuItem.Click += new System.EventHandler(this.shortcutToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salirToolStripMenuItem.Text = "Exit";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -131,25 +131,26 @@ namespace Target
             this.horatxt.AutoSize = true;
             this.horatxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 109.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.horatxt.ForeColor = System.Drawing.SystemColors.Control;
-            this.horatxt.Location = new System.Drawing.Point(12, 114);
+            this.horatxt.Location = new System.Drawing.Point(9, 93);
+            this.horatxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.horatxt.Name = "horatxt";
-            this.horatxt.Size = new System.Drawing.Size(930, 206);
+            this.horatxt.Size = new System.Drawing.Size(747, 166);
             this.horatxt.TabIndex = 1;
             this.horatxt.Text = "h:mm:ss tt";
             this.horatxt.Visible = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(473, 359);
+            this.ClientSize = new System.Drawing.Size(355, 292);
             this.ControlBox = false;
             this.Controls.Add(this.horatxt);
             this.Cursor = System.Windows.Forms.Cursors.Cross;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

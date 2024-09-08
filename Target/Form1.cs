@@ -50,11 +50,11 @@ namespace Target
             InitializeComponent();
             // Action key :: Keys.End
             RegisterHotKey(this.Handle, mActionHotKeyID, 0, (int)Keys.End);
-            // Action key :: Keys.Imppnt
-            RegisterHotKey(this.Handle, mPrintHotKeyID, 0, (int)Keys.PrintScreen);
+            // Action key :: Keys.Insert
+            RegisterHotKey(this.Handle, mPrintHotKeyID, 0, (int)Keys.Insert);
             // Send notification
             this.notifyIcon1.BalloonTipText = "Background Tool Operative";
-            this.notifyIcon1.BalloonTipTitle = "[Target v7.1]";
+            this.notifyIcon1.BalloonTipTitle = "[Target v7.2]";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.ShowBalloonTip(2);
             // clock
@@ -112,8 +112,8 @@ namespace Target
                         f.Dispose();
                         GC.SuppressFinalize(f);
                     }
-                    GC.Collect();
                     toDeleteList.Clear();
+                    GC.Collect();
                 }
                 else
                 {   

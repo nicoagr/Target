@@ -95,6 +95,8 @@ namespace Target
                     horatxt.Visible = false;
                     clock.Stop();
 
+                    // enable tray icon options
+                    toggleTrayOptions(true);
 
                     //Restore cursor position
                     Cursor.Position = cursorPoint;
@@ -142,6 +144,9 @@ namespace Target
                             fullscreenForm.Show();
                         }
                     }
+
+                    // disable tray menu options
+                    toggleTrayOptions(false);
 
                     // show clock
                     if (hora)
@@ -231,5 +236,23 @@ namespace Target
             if (shortcutToolStripMenuItem.Checked) prntshortcut = true;
             else prntshortcut = false;
         }
+
+        private void toggleTrayOptions(bool enable = false)
+        {
+            if (enable)
+            {
+                muteAudioToolStripMenuItem.Enabled = true;
+                backgoundToolStripMenuItem.Enabled = true;
+                shortcutToolStripMenuItem.Enabled = true;
+                salirToolStripMenuItem.Enabled = true;
+            } else
+            {
+                muteAudioToolStripMenuItem.Enabled = false;
+                backgoundToolStripMenuItem.Enabled = false;
+                shortcutToolStripMenuItem.Enabled = false;
+                salirToolStripMenuItem.Enabled = false;
+            }
+        }
+        
     }
 }
